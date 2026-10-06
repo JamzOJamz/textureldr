@@ -3,7 +3,7 @@
 #include <Geode/modify/CCSpriteFrameCache.hpp>
 #include <ranges>
 
-#if defined(TEXTURELDR_IOS)
+#if defined(GEODE_IS_IOS)
 #include "VanillaResourceResolver.hpp"
 #endif
 
@@ -215,7 +215,7 @@ bool doAddSpriteFramesWithFile(const char *plist, cocos2d::TextureQuality qualit
 	bool found = false;
 
 	for (const auto &dir : fileUtils->getSearchPaths()) {
-#if defined(TEXTURELDR_IOS)
+#if defined(GEODE_IS_IOS)
 		if (dir.empty()) {
 			continue;
 		}
@@ -267,7 +267,7 @@ bool doAddSpriteFramesWithFile(const char *plist, cocos2d::TextureQuality qualit
 		dict->release();
 	}
 
-#if defined(TEXTURELDR_IOS)
+#if defined(GEODE_IS_IOS)
 	auto vanillaPlist = resolveVanillaResource(plistStr);
 	if (!vanillaPlist.empty()) {
 		auto dict = CCDictionary::createWithContentsOfFileThreadSafe(vanillaPlist.c_str());

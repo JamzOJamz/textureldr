@@ -20,12 +20,6 @@ endif()
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-if ("${CMAKE_SYSTEM_NAME}" STREQUAL "iOS" OR IOS)
-	target_compile_definitions(${PROJECT_NAME} PRIVATE TEXTURELDR_IOS=1)
-	find_library(FOUNDATION_FRAMEWORK Foundation REQUIRED)
-	target_link_libraries(${PROJECT_NAME} ${FOUNDATION_FRAMEWORK})
-endif()
-
 if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode")
 else()
